@@ -1,0 +1,338 @@
+{
+  "info": {
+    "_postman_id": "ae08b4fa-5f51-4dfd-96f7-e42283f7ae97",
+    "name": "Trello API - Create Crad_positive _ negative scenarios Copy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48751891",
+    "_collection_link": "https://go.postman.co/collection/48751891-ae08b4fa-5f51-4dfd-96f7-e42283f7ae97?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Craete valid Card",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/lists?name=Testing&idBoard={{login._Board_Id}}&key={{key}}&token={{Token}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Testing"
+            },
+            {
+              "key": "idBoard",
+              "value": "{{login._Board_Id}}"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Craete Card with enter invalid Data type in name Query parameter",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/lists?name=&idBoard={{login._Board_Id}}&key={{key}}&token={{Token}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": ""
+            },
+            {
+              "key": "idBoard",
+              "value": "{{login._Board_Id}}"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Craete Card  without List_id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/cards?idList=&key={{key}}&token={{Token}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "cards"
+          ],
+          "query": [
+            {
+              "key": "idList",
+              "value": ""
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Craete  Card  with invalid http method",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/lists?name=Testing&idBoard={{login._Board_Id}}&key={{key}}&token={{Token}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Testing"
+            },
+            {
+              "key": "idBoard",
+              "value": "{{login._Board_Id}}"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Craete  Card  without key",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"Check if response contains invalid key\", function () {\r",
+              "    pm.expect(pm.response.text()).to.include(\"invalid key\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/lists?name=Testing&idBoard={{login._Board_Id}}&key=&token={{Token}}",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Testing"
+            },
+            {
+              "key": "idBoard",
+              "value": "{{login._Board_Id}}"
+            },
+            {
+              "key": "key",
+              "value": ""
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Craete  Card without  Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/lists?name=Testing&idBoard={{login._Board_Id}}&key={{key}}&token=",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "lists"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Testing"
+            },
+            {
+              "key": "idBoard",
+              "value": "{{login._Board_Id}}"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": ""
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,489 @@
+{
+  "info": {
+    "_postman_id": "3cd5698d-a322-4585-a899-66fd20835675",
+    "name": "Trello API - Create Board _positive _ negative scenarios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48751891",
+    "_collection_link": "https://go.postman.co/collection/48751891-3cd5698d-a322-4585-a899-66fd20835675?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Create Valid  Board",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=Login&key=4691024bd40d01ef65c3bbc88b571612&token=ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Login"
+            },
+            {
+              "key": "key",
+              "value": "4691024bd40d01ef65c3bbc88b571612"
+            },
+            {
+              "key": "token",
+              "value": "ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board with invalid Http method",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=Login&key=4691024bd40d01ef65c3bbc88b571612&token=ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Login"
+            },
+            {
+              "key": "key",
+              "value": "4691024bd40d01ef65c3bbc88b571612"
+            },
+            {
+              "key": "token",
+              "value": "ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board Without Name",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r",
+              "    pm.response.to.have.status(400);\r",
+              "});\r",
+              "\r",
+              "pm.test(\"test response body contian invalid value for name message \", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(\"invalid value for name\").to.eql(\"invalid value for name\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=&key=4691024bd40d01ef65c3bbc88b571612&token={{Token}}&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": ""
+            },
+            {
+              "key": "key",
+              "value": "4691024bd40d01ef65c3bbc88b571612"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board Without key",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});\r",
+              "\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=Login&key=&token=ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Login"
+            },
+            {
+              "key": "key",
+              "value": ""
+            },
+            {
+              "key": "token",
+              "value": "ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board Without Token",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 401\", function () {\r",
+              "    pm.response.to.have.status(401);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=Login&key={{key}}&token=&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Login"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": ""
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board With invalid endpoind",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 404\", function () {\r",
+              "    pm.response.to.have.status(404);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boardslljlklkm/?name=Login&key=4691024bd40d01ef65c3bbc88b571612&token=ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boardslljlklkm",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Login"
+            },
+            {
+              "key": "key",
+              "value": "4691024bd40d01ef65c3bbc88b571612"
+            },
+            {
+              "key": "token",
+              "value": "ATTAd76c0a5587a85524d4ae2e62b53889459e6246b9440b73ffe4c9e43dae90cb370E9AFD7B"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board -Min Length Name (1 Char)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=L&key={{key}}&token={{Token}}&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "L"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board - Max Length Name (16384 Chars)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name=Logikosdkaokdkoasdoksaojdjasjdksdopisaidopiaodjosajidouisudisduiosuiodjsdjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh&key={{key}}&token={{Token}}&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "Logikosdkaokdkoasdoksaojdjasjdksdopisaidopiaodjosajidouisudisduiosuiodjsdjhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Board - Out of Max Boundary (16385 Chars)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "\r",
+              "var tooLongName = \"X\".repeat(16385);\r",
+              "pm.environment.set(\"too_long_name\", tooLongName);\r",
+              "\r",
+              "pm.test(\"Status code is 414\", function () {\r",
+              "    pm.response.to.have.status(414);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "https://api.trello.com/1/boards/?name={{too_long_name}}&key={{key}}&token={{Token}}&defaultlists=false",
+          "protocol": "https",
+          "host": [
+            "api",
+            "trello",
+            "com"
+          ],
+          "path": [
+            "1",
+            "boards",
+            ""
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "{{too_long_name}}"
+            },
+            {
+              "key": "key",
+              "value": "{{key}}"
+            },
+            {
+              "key": "token",
+              "value": "{{Token}}"
+            },
+            {
+              "key": "defaultlists",
+              "value": "false"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
